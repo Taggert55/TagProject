@@ -1,0 +1,89 @@
+/* style.css */
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+  }
+  
+  h1 {
+    color: navy;
+    text-align: center;
+  }
+  h1{
+    font-family:Georgia, 'Times New Roman', Times, serif
+  }
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .center-text {
+    text-align: center;
+  }
+  
+  .center-list {
+    text-align: center;
+  }
+  
+  .center-list ul {
+    list-style-position: inside; 
+    padding-left: 0; 
+  }            
+  
+  .center-list {
+    text-align: center;
+  }
+  .center-list ol {
+    list-style-position: inside; 
+    padding-left: 0;             
+  }
+
+  body {
+    background-color: gray;
+  }
+
+  h1 {
+    color: navy;
+  }
+  
+  ul {
+    color: navy;
+  }
+
+  ol {
+    color: navy;
+  }
+  
+  ol {
+    font-size: 24px;
+  }
+ul {
+    font-size: 18px;
+}  
+body {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+  }
+  
+
+.tableau-container {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 600px;
+    height: 400px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    background: white;
+  }
+
+  .tableau-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+  .main-content {
+    padding-bottom: 60px; 
+    padding-top: 40px;
+  }
+  

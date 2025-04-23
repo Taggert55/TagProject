@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Riddle Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 90%;
+      max-width: 500px;
+    }
+
+    h1 {
+      margin-bottom: 1rem;
+    }
+
+    #riddle {
+      font-size: 1.2rem;
+      margin: 1.5rem 0;
+    }
+
+    button {
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>The Spynx 🤔</h1>
+    <div id="riddle">Click the button to get 1 from over 100 riddles!</div>
+    <button onclick="showRiddle()">Get a Riddle</button>
+  </div>
+
+  <script>
+    const riddles = [
+      "What has to be broken before you can use it? — An egg.",
+      "I’m tall when I’m young, and I’m short when I’m old. What am I? — A candle.",
+      "What month of the year has 28 days? — All of them.",
+      "What is full of holes but still holds water? — A sponge.",
+      "What question can you never answer yes to? — Are you asleep yet?",
+      "What goes up but never comes down? — Your age.",
+      "What gets wet while drying? — A towel.",
+      "I have branches, but no fruit, trunk or leaves. What am I? — A bank.",
+      "The more of me you take, the more you leave behind. What am I? — Footsteps.",
+      "What can’t talk but will reply when spoken to? — An echo.",
+      "What has one eye but can’t see? — A needle.",
+"What gets bigger the more you take away? — A hole.",
+"I speak without a mouth and hear without ears. I have nobody, but I come alive with the wind. What am I? — An echo.",
+"What can run but never walks, has a bed but never sleeps, has a mouth but never talks? — A river.",
+"What can fill a room but takes up no space? — Light.",
+"The more you take, the more you leave behind. What am I? — Footsteps.",
+"I’m found in socks, scarves and mittens; and often in the paws of playful kittens. What am I? — Yarn.",
+"What invention lets you look right through a wall? — A window.",
+"I go in hard, come out soft, and I'm never the same. What am I? — Chewing gum.",
+"You see me once in June, twice in November, but not at all in May. What am I? — The letter 'e'.",
+"I have cities, but no houses. I have mountains, but no trees. I have water, but no fish. What am I? — A map.",
+"What can you catch but not throw? — A cold.",
+"I shave every day, but my beard stays the same. Who am I? — A barber.",
+"What kind of coat is best put on wet? — A coat of paint.",
+"The more you take away from me, the bigger I get. What am I? — A hole.",
+"What has keys but can’t open locks? — A piano.",
+    "What comes once in a minute, twice in a moment, but never in a thousand years? — The letter 'm'.",
+    "What has hands but can’t clap? — A clock.",
+    "What can you hold without touching it? — A conversation.",
+    "What begins with T, ends with T, and has T in it? — A teapot.",
+    "I have no life, but I can die. What am I? — A battery.",
+    "What can travel around the world while staying in one corner? — A stamp.",
+    "What has a head and a tail but no body? — A coin.",
+    "What comes down but never goes up? — Rain.",
+    "I’m not alive, but I grow; I don’t have lungs, but I need air. What am I? — Fire.",
+    "The more you take, the more you leave behind. What am I? — Footsteps.",
+    "What has legs but doesn’t walk? — A table.",
+    "What gets sharper the more you use it? — Your brain.",
+    "I’m light as a feather, yet the strongest person can’t hold me for five minutes. What am I? — Breath.",
+    "What has words but never speaks? — A book.",
+    "What kind of room has no doors or windows? — A mushroom.",
+    "What has an endless supply of letters but starts empty? — A mailbox.",
+    "What breaks and never falls, and what falls and never breaks? — Day breaks and night falls.",
+    "What can be cracked, made, told, and played? — A joke.",
+    "What comes before thunder? — Lightning.",
+    "What can fill your pocket without taking up space? — A hole.",
+    "What belongs to you but other people use it more than you do? — Your name.",
+    "What is so fragile that saying its name breaks it? — Silence.",
+    "What can run but never needs legs? — Water.",
+    "What flies without wings? — Time.",
+    "What goes through towns and fields but never moves? — A road.",
+    "What is always in front of you but can’t be seen? — The future.",
+    "What has a neck but no head? — A bottle.",
+    "What gets bigger the more you take away from it? — A hole.",
+    "What gets broken without being held? — A promise.",
+    "The more you have of me, the less you see. What am I? — Darkness.",
+    "What has four wheels and flies? — A garbage truck.",
+    "I go up and down but never move. What am I? — A staircase.",
+    "What kind of band never plays music? — A rubber band.",
+    "What has a face and two hands but no arms or legs? — A clock.",
+    "I’m found on a table, but I’m not food. What am I? — A tablecloth.",
+    "What begins with an E but only has one letter? — An envelope.",
+    "What has one head, one foot, and four legs? — A bed.",
+    "What’s easy to lift but hard to throw? — A feather.",
+    "What tastes better than it smells? — A tongue.",
+    "Where does today come before yesterday? — The dictionary.",
+    "What goes up when the rain comes down? — An umbrella.",
+    "What gets wetter the more it dries? — A towel.",
+    "What can you catch but not throw? — A cold.",
+    "What has many teeth but can’t bite? — A comb.",
+    "What has a bottom at the top? — Your legs.",
+    "What begins and ends with an E but only contains one letter? — An envelope.",
+    "What five-letter word becomes shorter when you add two letters to it? — Short.",
+    "What has a ring but no finger? — A telephone.",
+    "I am always hungry, I must always be fed. The finger I touch will soon turn red. What am I? — Fire.",
+    "What has many keys but can’t open a single lock? — A piano.",
+    "What gets whiter the dirtier it gets? — A chalkboard.",
+    "What has a spine but no bones? — A book.",
+    "What can be seen once in a second, twice in a decade, but never in a lifetime? — The letter 'e'.",
+    "What has a bark but no bite? — A tree.",
+    "What has no beginning, middle, or end? — A circle.",
+    "What is always answered without being questioned? — A doorbell.",
+    "What comes at night without being called and is lost in the day without being stolen? — The stars.",
+    "What can bring back the dead, make us cry, make us laugh, make us young? — Memories.",
+    "What has ears but cannot hear? — A cornfield.",
+    "What’s full of holes but still holds a lot of weight? — A net.",
+    "What has four fingers and a thumb but is not alive? — A glove.",
+    "What has a tail and a head but no body? — A coin.",
+    "What kind of tree can you carry in your hand? — A palm.",
+    "What has numbers but can't do math? — A clock.",
+    "What can you break, even if you never pick it up or touch it? — A promise.",
+    "What never asks a question but gets answered all the time? — Your phone.",
+    "What goes up but never comes down? — Your age.",
+    "What comes in through the window without breaking it? — Light.",
+    "What is always running but never gets tired? — A clock.",
+    "What do you throw out when you want to use it, but take in when you don’t? — An anchor.",
+    "What has something inside but no doors or windows and has to be broken to be used? — An egg.",
+    "What gets lost every time you stand still? — Your shadow.",
+    "What’s heavier: a ton of feathers or a ton of bricks? — Neither, they both weigh a ton.",
+    "What’s orange and sounds like a parrot? — A carrot.",
+    "I am taken from a mine, and shut in a wooden case, from which I am never released, and yet I am used by almost every person. What am I? — Pencil lead.",
+    "What has rivers without water, forests without trees, and cities without buildings? — A map.",
+    "What can be long or short, can be grown or bought, can be painted or left bare, and can make you look beautiful? — Hair.",
+    "What’s black and white and read all over? — A newspaper.",
+    "What lives if it is fed, but dies if you give it a drink? — Fire.",
+    "What can’t be used until it’s broken? — An egg."
+
+    ];
+
+    function showRiddle() {
+      const randomIndex = Math.floor(Math.random() * riddles.length);
+      document.getElementById("riddle").textContent = riddles[randomIndex];
+    }
+  </script>
+ <img src="/assets/img/greek-sphinx.jpg" alt="Riddle visual" id="riddle-img">
+ <a href="scratch.html" class="home-button">🏠 From Scratch Page</a>
+
+<style>
+  .home-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: background-color 0.2s ease;
+  }
+
+  .home-button:hover {
+    background-color: #2980b9;
+  }
+</style>
+
+</body>
+</html>
